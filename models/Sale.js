@@ -24,18 +24,24 @@ const saleSchema = new Schema({
             required: true
         }
     }],
-    totalPrice: {
+    totalprice: {
         type: Number,
         required: [true, 'Please input total price']
     },
-    isPaid: {
+    ispaid: {
         type: Boolean,
         default: false
     },
     customer: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: [true, 'Please input a customer']
+        username: {
+            type: String,
+            required: true
+        },
+        userid: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        }
     }
 
 }, { timestamps: true });
