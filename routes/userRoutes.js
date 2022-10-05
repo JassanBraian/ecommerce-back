@@ -16,7 +16,9 @@ userRouter.route('/')
 
 userRouter.route('/userbytoken')
     .get(protect, getUserByToken)
+
 userRouter.route('/:id')
     .delete(protect, restrictTo('admin'), deleteUser)
     .get(getUserById)
+
 module.exports = userRouter;
