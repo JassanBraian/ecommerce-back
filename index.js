@@ -6,6 +6,7 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const saleRoutes = require('./routes/saleRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 const cors = require('cors');
 // const { use } = require('./routes/userRoutes');
@@ -23,6 +24,7 @@ app.use(cors());
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/sale', saleRoutes);
+app.use('/api/v1/product', productRoutes);
 
 const port = process.env.PORT || 4500;
 
