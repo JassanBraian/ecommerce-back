@@ -22,8 +22,8 @@ try{
 }
 // este metodo no es necesario 
 exports.updateUser = async ( req, res) =>{
-  const { id } = req.params;
-  /* const id = req.User._id; */
+  // const { id } = req.params;
+  const id = req.user._id;
   let updateUser
   try{
 
@@ -34,12 +34,12 @@ exports.updateUser = async ( req, res) =>{
             name:req.body.name, 
             surname:req.body.surname, 
             email:req.body.email} 
-    /* if(user.role==="client" || user.role===user.role){
+    if(req.user.role==="client" || req.user.role===user.role){
        console.log("Usted no puede manipular el Role");
        updateUser = await User.findByIdAndUpdate(id,newBody, {new:true});
-    }else{ */
+    }else{
       updateUser = await User.findByIdAndUpdate(id, req.body, {new:true});
-    /* } */
+    }
     return res.status(200).json({ok:true, publication: updateUser});
   }catch(error){
     console.log(error);
@@ -73,11 +73,12 @@ exports.getUserById = async( req, res) => {
 
 exports.getUserByToken= async(req, res)=>{
   try{
-    const {name,surname, email}= req.user;
+    const {name,surname, email, role}= req.user;
     return res.status(200).json({user:{
       name,
       surname,
-      email
+      email,
+      role
     }
   });
   }catch(error){
