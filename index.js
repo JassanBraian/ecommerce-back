@@ -3,6 +3,9 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
 // Routes
+const publicationRoutes = require('./routes/publicationRoutes');
+const commentRoutes = require('./routes/commentRoutes');
+const favouriteRoutes = require('./routes/favouriteRoutes');
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const saleRoutes = require('./routes/saleRoutes');
@@ -25,6 +28,9 @@ app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/sale', saleRoutes);
 app.use('/api/v1/product', productRoutes);
+app.use('/api/v1/publication', publicationRoutes);
+app.use('/api/v1/comment', commentRoutes);
+app.use('/api/v1/favourite', favouriteRoutes);
 
 const port = process.env.PORT || 4500;
 
